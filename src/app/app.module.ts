@@ -12,6 +12,7 @@ import { RegisterFormComponent } from './components/shared/register/register-for
 import { LoginComponent } from './components/shared/login/login.component';
 import { MenuheaderComponent } from './components/shared/menuheader/menuheader.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserlistComponent } from './components/admin/userlist/userlist.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditUserComponent,
     RegisterFormComponent,
     LoginComponent,
-    MenuheaderComponent
+    MenuheaderComponent,
+    UserlistComponent
   ],
   imports: [
     BrowserModule,
