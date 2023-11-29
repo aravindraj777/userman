@@ -56,9 +56,6 @@ export class RegisterFormComponent implements OnInit,OnDestroy{
 
   }
 
-  
-  
-
   showModal(status: string, message: string) {
     this._dialog.open(ModalComponent, {
       width: '300px',
