@@ -13,6 +13,12 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { MenuheaderComponent } from './components/shared/menuheader/menuheader.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserlistComponent } from './components/admin/userlist/userlist.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './components/shared/modal/modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MaterialModule } from './material.module';
+
 
 @NgModule({
   declarations: [
@@ -25,13 +31,18 @@ import { UserlistComponent } from './components/admin/userlist/userlist.componen
     RegisterFormComponent,
     LoginComponent,
     MenuheaderComponent,
-    UserlistComponent
+    UserlistComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

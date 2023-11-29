@@ -1,0 +1,32 @@
+.mat-dialog-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3f51b5;
+    text-align: center;
+  }
+  
+  /* Style the dialog content */
+  .mat-dialog-content {
+    font-size: 16px;
+    color: #2196f3;
+    padding: 16px;
+  }
+  
+  /* Style the dialog actions */
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+  }
+  
+  /* Style the close button */
+  .mat-dialog-close {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  /* Style the go to login button */
+  .mat-raised-button.accent {
+    background-color: #4caf50;
+    color: white;
+  }
