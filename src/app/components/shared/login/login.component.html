@@ -1,10 +1,10 @@
 
 <body>
     <div class="container mx-auto px-4">
-      <div class="shadow-xl rounded-lg p-8 bg-white">
+      <div class="shadow-xl rounded-lg p-8 bg-white w-full">
         <h2 class="text-2xl font-bold text-gray-900">Login</h2>
   
-        <form [formGroup]="myForm" class="mt-4">
+        <form [formGroup]="myForm" class="mt-4 " >
           <div class="mb-4">
             <label for="email" class="block mb-2 text-white">Email Address:</label>
             <input type="email" id="email" formControlName="email" class="form-input" placeholder="Enter your email">
@@ -15,13 +15,13 @@
           <div class="mb-4">
             <label for="password" class="block mb-2 text-white">Password:</label>
             <input type="password" id="password" formControlName="password" class="form-input" placeholder="Enter your password">
-            <div class="text-red-500 mt-1">Password is required</div>
-            <div class="text-red-500 mt-1">Password must be at least 6 characters</div>
+            <!-- <div class="text-red-500 mt-1" *ngIf="myForm.invalid || !myForm.dirty">Password is required</div>
+            <div class="text-red-500 mt-1" *ngIf="myForm.invalid && myForm.dirty">Password must be at least 6 characters</div> -->
           </div>
   
           <div class="flex items-center justify-between">
-            <a href="#" class="text-gray-300 hover:text-indigo-300" routerLink="/register">Forgot Password?</a>
-            <button type="submit" class="bg-silver hover:bg-gray-400 text-white font-bold py-2 px-4 rounded">Login</button>
+            <a href="#" class="text-gray-300 hover:text-indigo-300" routerLink="register">Register</a>
+            <button type="submit" class="bg-silver hover:bg-gray-400 text-white font-bold py-2 px-4 rounded" >Login</button>
           </div>
         </form>
       </div>
