@@ -11,11 +11,12 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.css'
 })
-export class RegisterFormComponent implements OnInit{
+export class RegisterFormComponent implements OnInit,OnDestroy{
 
   registerForm!:FormGroup;
   status:boolean=false;
   private _registerSubscription!:Subscription;
+
   constructor(private formBuilder:FormBuilder,private _userService:UserService,private _dialog:MatDialog ){}
  
   
@@ -31,48 +32,11 @@ export class RegisterFormComponent implements OnInit{
   }
 
 
- 
-
-
-  // proceedToRegister(){
-  //   console.log(this.registerForm.value)
-  //   if(this.registerForm.valid){
-
-      
-  //    this._registerSubscription = this._userService.registerUser(this.registerForm.value).subscribe((res:RegisterApiResponse)=>{
-          
-  //    })
-  //   }
-  // }
-
-
-  // proceedToRegister() {
-  //   console.log(this.registerForm.value);
-
-  //   if (this.registerForm.valid) {
-  //     this._userService.registerUser(this.registerForm.value).subscribe({
-  //       (res: RegisterApiResponse) => {
-  //         this.showModal(res.status, res.message);
-  //       },
-  //       (error) => {
-  //         if (error.status === 400 && error.error.status === 'Failed') {
-            
-  //           this.showModal('error', error.error.message || 'Failed to register user');
-  //         } else {
-          
-  //           this.showModal('error', 'Unexpected error. Please try again later.');
-  //         }
-  //       }
-  //   });
-  //   }
-  // }
-
-
-  proceedToRegister() {
+ proceedToRegister() {
     console.log(this.registerForm.value);
   
-    if (this.registerForm.valid) {
-      this._userService.registerUser(this.registerForm.value).subscribe({
+      if (this.registerForm.valid) {
+      this._registerSubscription = this._userService.registerUser(this.registerForm.value).subscribe({
         next: (res: RegisterApiResponse) => {
           this.showModal(res.status, res.message);
         },
@@ -88,7 +52,11 @@ export class RegisterFormComponent implements OnInit{
         }
       });
     }
+
+
   }
+
+  
   
 
   showModal(status: string, message: string) {
@@ -97,15 +65,21 @@ export class RegisterFormComponent implements OnInit{
       data: { title: status.toUpperCase(), message: message },
     });
   }
+
+  ngOnDestroy(): void {
+    if(this._registerSubscription){
+      this._registerSubscription.unsubscribe();
+    }
+  }
+
+
+  
 }
 
   
-  //  ngOnDestroy(): void {
-     
-  //   if(this._registerSubscription){
-  //     this._registerSubscription.unsubscribe();
-  //   }
-  //  }
+   
 
   
  
+
+
