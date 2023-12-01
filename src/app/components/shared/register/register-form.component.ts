@@ -1,10 +1,10 @@
 import { Component,  OnDestroy,  OnInit, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user/user.service';
-import { RegisterApiResponse } from '../../../model/user.model';
 import { Subscription } from 'rxjs';
 import { ModalComponent } from '../modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { RegisterApiResponse } from '../../../model/user.model';
 
 @Component({
   selector: 'app-register-form',
@@ -37,7 +37,7 @@ export class RegisterFormComponent implements OnInit,OnDestroy{
   
       if (this.registerForm.valid) {
       this._registerSubscription = this._userService.registerUser(this.registerForm.value).subscribe({
-        next: (res: RegisterApiResponse) => {
+        next: (res:RegisterApiResponse) => {
           this.showModal(res.status, res.message);
         },
         error: (error) => {

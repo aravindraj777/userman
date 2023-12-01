@@ -10,21 +10,26 @@ import { FormBuilder, FormControl, FormGroup, NgControl, Validators } from '@ang
 export class LoginComponent implements OnInit {
 
 
-  myForm: FormGroup;
+  loginForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
-    // Initialize the form in the constructor
-    this.myForm = this.formBuilder.group({
-      firstName: new FormControl(),
-    });
+    
+    
   }
 
   ngOnInit() {
-    this.myForm = this.formBuilder.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password:new FormControl('',Validators.required)
+    this.loginForm = this.formBuilder.group({
+      email: this.formBuilder.control('',Validators.compose([Validators.required,Validators.email])),
+      password:this.formBuilder.control('',Validators.compose( [Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]))
 
-      // Add other form controls if needed
     });
+  }
+
+
+  proceedToLogin(){
+    if(this.loginForm.valid){
+      const {email,password} = this.loginForm.value;
+      this
+    }
   }
 }

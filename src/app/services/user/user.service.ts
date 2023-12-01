@@ -14,4 +14,7 @@ export class UserService {
   registerUser(userData:FormData):Observable<RegisterApiResponse>{
     return this._http.post<RegisterApiResponse>('http://localhost:8080/api/v1/auth/signup',userData)
   }
+
+  
+  
 }
