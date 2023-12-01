@@ -18,6 +18,8 @@ import { ModalComponent } from './components/shared/modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialModule } from './material.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 
 @NgModule({
@@ -42,7 +44,10 @@ import { MaterialModule } from './material.module';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatDialogModule
+    MatDialogModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
