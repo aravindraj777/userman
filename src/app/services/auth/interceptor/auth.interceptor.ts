@@ -1,6 +1,7 @@
-import { HttpEventType, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpEvent, HttpEventType, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { tap } from "rxjs";
+import { Observable, tap } from "rxjs";
+import { LoginResponse } from "../../../model/user.model";
 
 @Injectable()
  export class AuthInterceptor implements HttpInterceptor{
@@ -23,7 +24,7 @@ import { tap } from "rxjs";
                     localStorage.setItem('accessToken',token);
                     localStorage.setItem('refreshToken',refreshToken);
                     console.log("acc",localStorage.getItem('refreshToken'))
-                 }
+                }
 
                
             })
