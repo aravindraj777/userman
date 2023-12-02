@@ -13,13 +13,18 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { MenuheaderComponent } from './components/shared/menuheader/menuheader.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserlistComponent } from './components/admin/userlist/userlist.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './components/shared/modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialModule } from './material.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/auth/auth.effects';
+import { initialState } from './store/auth/auth.state';
+import { AuthInterceptor } from './services/auth/interceptor/auth.interceptor';
+
 
 
 @NgModule({
@@ -45,11 +50,10 @@ import { reducers, metaReducers } from './reducers';
     BrowserAnimationsModule,
     MaterialModule,
     MatDialogModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    })
+    StoreModule.forRoot(),
+    EffectsModule.forRoot([AuthEffects])
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
