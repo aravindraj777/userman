@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/shared/login/login.component';
 import { MenuheaderComponent } from './components/shared/menuheader/menuheader.component';
 import { RegisterFormComponent } from './components/shared/register/register-form.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { UserlistComponent } from './components/admin/userlist/userlist.component';
 import { HomeComponent } from './components/user/home/home.component';
+
+import { AuthService } from './services/auth/auth.service';
+
+
 
 const routes: Routes = [
   {path:"",component:LoginComponent},
