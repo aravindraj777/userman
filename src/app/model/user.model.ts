@@ -4,6 +4,7 @@
     email:string;
     phone:string;
     password:string;
+    role:string;
  }
  
  export interface RegisterApiResponse{
@@ -13,11 +14,10 @@
 }
 
 export interface LoginResponse{
-    data:{
+    
         user:User;
         accessToken:string;
         refreshToken:string;
-    }
     
    
 }

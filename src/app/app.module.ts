@@ -24,6 +24,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/auth/auth.effects';
 import { initialState } from './store/auth/auth.state';
 import { AuthInterceptor } from './services/auth/interceptor/auth.interceptor';
+import { authReducer } from './store/auth/auth.reducer';
+import { _userReducer } from './store/user/user.reducer';
+import { UserEffects } from './store/user/user.effects';
 
 
 
@@ -50,8 +53,8 @@ import { AuthInterceptor } from './services/auth/interceptor/auth.interceptor';
     BrowserAnimationsModule,
     MaterialModule,
     MatDialogModule,
-    StoreModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects])
+    StoreModule.forRoot({auth:authReducer,user:_userReducer}),
+    EffectsModule.forRoot([AuthEffects,UserEffects])
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]

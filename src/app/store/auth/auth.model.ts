@@ -1,6 +1,8 @@
+import { User } from "../../model/user.model";
+
 export interface AuthState{
     isLoggedIn:boolean;
-    user:null;
+    user:null | User;
     error:Error | null;
 }
 

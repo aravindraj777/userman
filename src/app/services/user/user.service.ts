@@ -12,7 +12,11 @@ export class UserService {
 
 
   registerUser(userData:FormData):Observable<RegisterApiResponse>{
-    return this._http.post<RegisterApiResponse>('http://localhost:8080/api/v1/auth/signup',userData)
+    return this._http.post<RegisterApiResponse>('auth/signup',userData)
+  }
+
+  getAllUsers():Observable<any>{
+    return this._http.get('auth/all-users');
   }
 
   
