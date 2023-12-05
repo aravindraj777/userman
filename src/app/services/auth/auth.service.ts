@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private _http:HttpClient,private _store:Store<RootState>,private _router:Router) { }
 
  
-  private readonly _ACCESS_TOKEN_KEY = 'accessToken';
+  private readonly _ACCESS_TOKEN_KEY = 'token';
   private readonly _REFRESH_TOKEN_KEY = 'refreshToken';
   private readonly _AUTH_HEADER = 'authorization';
 
@@ -86,6 +86,7 @@ export class AuthService {
   logOut():void{
     localStorage.removeItem(this._ACCESS_TOKEN_KEY);
     localStorage.removeItem(this._REFRESH_TOKEN_KEY);
+    this._router.navigate([""])
   }
 
   
@@ -104,5 +105,7 @@ export class AuthService {
      console.log(user);
      return user;
   }
+
+  
 
 }
