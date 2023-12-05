@@ -10,20 +10,10 @@ import { getError, getUsers } from '../../../store/user/user.selector';
   templateUrl: './admin-home.component.html',
   styleUrl: './admin-home.component.css'
 })
-export class AdminHomeComponent implements OnInit{
+export class AdminHomeComponent {
 
 
-  users$: Observable<User[]>;
-  error$: Observable<any>;
   
-  constructor(private _store:Store){
-    this.users$ = this._store.select(getUsers);
-    this.error$ = this._store.select(getError);
-
-  }
-  ngOnInit(): void {
-   this._store.dispatch(loadUsers());
-  }
  
   
 
