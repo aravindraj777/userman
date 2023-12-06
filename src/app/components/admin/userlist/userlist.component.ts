@@ -29,7 +29,7 @@ export class UserlistComponent implements OnInit{
     })
 
   }
-  
+
   ngOnInit(): void {
    this._store.dispatch(loadUsers());
   }
@@ -39,7 +39,19 @@ export class UserlistComponent implements OnInit{
     const dialogRef = this._dialog.open(EditUserComponent, {
       data: user,
     });
-
-   
   }
+
+  deleteUser(user:User){
+    const userId = user.id;
+    this._userService.deleteUser(userId).subscribe(
+      (response)=>{
+        console.log("success",response)
+        this._userService.showDeleteSuccessAlert();
+      },
+      (error)=>{
+        console.log("erro",error);
+      }
+    )
+  }
+
 }
