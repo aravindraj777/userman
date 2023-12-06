@@ -1,0 +1,17 @@
+/* userlist.component.css */
+
+.search-container {
+    margin-bottom: 20px; /* Adjust the margin as needed */
+  }
+  
+  .search-input {
+    width: 300px; /* Adjust the width as needed */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .table-container {
+    margin-top: 20px; /* Adjust the margin as needed */
+  }
+  

@@ -31,6 +31,7 @@ import { MatCardModule } from '@angular/material/card';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { MatOptionModule } from '@angular/material/core';
 import { ToastrModule } from 'ngx-toastr';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -63,7 +64,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatOptionModule,
     ToastrModule.forRoot(),
     StoreModule.forRoot({auth:authReducer,user:_userReducer}),
-    EffectsModule.forRoot([AuthEffects,UserEffects])
+    EffectsModule.forRoot([AuthEffects,UserEffects]),
+    StoreDevtoolsModule.instrument({maxAge:25, logOnly:false})
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]

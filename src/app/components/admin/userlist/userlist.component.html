@@ -1,7 +1,8 @@
 
 <app-menuheader></app-menuheader>
-<div class="container m-8">
+<!-- <div class="container m-8">
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="flex flex-col">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -28,4 +29,58 @@
       </tbody>
     </table>
   </div>
+</div> -->
+
+
+<div class="search-container">
+  <input
+    type="text"
+    placeholder="Search by Email"
+    [(ngModel)]="searchTerm"
+    (input)="onSearchInputChange()"
+    class="search-input"
+  />
 </div>
+
+<div *ngIf="filteredUsers.length > 0; else noUsersFound" class="table-container">
+  <!-- Display the table with matching users -->
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">Username</th>
+        <th scope="col" class="px-6 py-3">Phone</th>
+        <th scope="col" class="px-6 py-3">ROLE</th>
+        <th scope="col" class="px-6 py-3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filteredUsers">
+        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          {{ user.email }}
+        </td>
+        <td class="px-6 py-4">{{ user.phone }}</td>
+        <td class="px-6 py-4">{{ user.role }}</td>
+        <td class="px-6 py-4">
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            (click)="editUser(user)"
+          >
+            Edit
+          </button>
+          <button
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded m-2"
+            (click)="deleteUser(user)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noUsersFound>
+  <!-- Display a message when no users are found -->
+  <p>No user found with this email.</p>
+</ng-template>
+
