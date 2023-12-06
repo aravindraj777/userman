@@ -4,7 +4,9 @@ import { loginFailure, loginSuccess } from "./auth.actions";
 
 export const authReducer = createReducer(initialState,
     on(loginSuccess,(state,{user})=>{
+        console.log(user,"userrrrrrrrrrr")
         return{
+            
             ...state,
             isLoggedIn:true,
             user:user,

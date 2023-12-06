@@ -10,117 +10,34 @@ import { LoginResponse, User } from "../../model/user.model";
 export class AuthEffects {
 
 
-    constructor(private _actions$: Actions, private _http: HttpClient, private _authService: AuthService) { }
+  constructor(private _actions$: Actions, private _http: HttpClient, private _authService: AuthService) { }
 
 
-    // login$ = createEffect(() =>
-    //     this._actions$.pipe(
-    //         ofType(loginRequest),
-
-
-    //         switchMap((action) => {
-    //             const loginData = action.login;
-
-    //             return this._authService.login(loginData).pipe(
-    //                 map((response: LoginResponse) => {
-    //                     const { user, accessToken, refreshToken } = response.data;
-    //                     return loginSuccess({user,accessToken,refreshToken});
-    //                 }),
-    //                 catchError((error) => of(loginFailure({ error })))
-
-    //             )
-    //         })
-    //     )
-
-    // )
-
-    // login$ = createEffect(() =>
-    //     this._actions$.pipe(
-    //         ofType(loginRequest),
-
-
-    //         switchMap((action) => {
-    //             const loginData = action.login;
-
-    //             return this._authService.login(loginData).pipe(
-    //                 // map((response: LoginResponse) => {
-    //                 //     console.log(response,"response")
-    //                 //     const userData = response.data.user;
-    //                 //     if(userData){
-                            
-    //                 //     return loginSuccess({ user:userData });
-    //                 //     }
-    //                 //     else{
-    //                 //         return loginFailure({error:new Error('Invalid')})
-    //                 //     }
-                        
-    //                 // }),
-
-    //                 map((response:LoginResponse) => {
-    //                     console.log('API Responseeee:', response);
-                      
-    //                     const { user, accessToken, refreshToken } = response.data;
-                      
-    //                     if (user ) {
-    //                         console.log(user.email)
-    //                       const { id, username, email, phone, password, role } = user;
-                      
-    //                       // Dispatch the login success action
-    //                       return loginSuccess({
-    //                         user: { id, username, email, phone, password, role }
-                    
-    //                       });
-    //                     } else {
-    //                       console.error('Invalid response structure:', response);
-    //                       return loginFailure({ error: new Error('Invalid response structure') });
-    //                     }
-    //                   }),
-                      
-                      
-    //                 catchError((error) => of(loginFailure({ error })))
-
-    //             )
-    //         })
-    //     )
-
-    // )
-
-
-
-    login$ = createEffect(() =>
-  this._actions$.pipe(
-    ofType(loginRequest),
-    switchMap((action) => {
-      const loginData = action.login;
-      console.log("Requesting login with data:", loginData);
-
-      return this._authService.login(loginData).pipe(
-        map((response: any) => { // Change the type to 'any' if the response structure is not fixed
-          console.log("Response from login API:", response);
-
-          // Check if response and response.user are defined
-          if (response && response.user) {
-            const { user } = response;
-            console.log("User data:", user);
-
-            // Dispatch loginSuccess with user data
-            return loginSuccess({ user });
-          } else {
-            console.error("Invalid response structure. Response or response.user is undefined:", response);
-
-            // Dispatch a loginFailure action
-            return loginFailure({ error: new Error('Invalid response structure') });
-          }
-        }),
-        catchError((error) => {
-          console.error("Error in login API:", error);
-
-          // Dispatch loginFailure action
-          return of(loginFailure({ error }));
-        })
-      );
-    })
-  )
-);
+  login$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(loginRequest),
+      switchMap((action) => {
+        const loginData = action.login;
+        console.log("Requesting login with data:", loginData);
+        return this._authService.login(loginData).pipe(
+          map((response: any) => {
+            console.log("Response from login API:", response);
+            if (response && response.user) {
+              const { user } = response;
+              console.log("User dataaaaaa:", user);
+              return loginSuccess({ user });
+            } else {
+              console.error("Invalid response structure. Response or response.user is undefined:", response);
+              return loginFailure({ error: new Error('Invalid response structure') });
+            }
+          }),
+          catchError((error) => {
+            console.error("Error in login API:", error);
+            return of(loginFailure({ error }));
+          })
+        );
+      })
+    )
+  );
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { User } from '../../../model/user.model';
 import { loadUsers } from '../../../store/user/user.action';
 import { getUsers, getError } from '../../../store/user/user.selector';
@@ -17,21 +17,27 @@ export class UserlistComponent implements OnInit{
 
 
   users:User[] = []
+  filteredUsers: User[] = [];
   error$: Observable<any>;
   users$: Observable<User[]>;
+  searchTerm: string = '';
   
   constructor(private _store:Store,private _dialog:MatDialog,private _userService:UserService){
     this.users$ = this._store.select(getUsers);
     this.error$ = this._store.select(getError);
 
+   
+
     this.users$.subscribe((users)=>{
       this.users = users;
+      this.filteredUsers = users;
     })
 
   }
 
   ngOnInit(): void {
    this._store.dispatch(loadUsers());
+   console.log(this._store)
   }
 
   
@@ -53,5 +59,19 @@ export class UserlistComponent implements OnInit{
       }
     )
   }
+
+
+  onSearchInputChange(): void {
+    this.filteredUsers = this.users.filter((user) =>
+      user.email.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+
+    // If there are no matching users
+    if (this.filteredUsers.length === 0 && this.searchTerm.trim() !== '') {
+      
+      console.log("No user found with this email");
+    }
+  }
+  
 
 }
