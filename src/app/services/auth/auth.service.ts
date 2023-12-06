@@ -20,31 +20,7 @@ export class AuthService {
   private readonly _AUTH_HEADER = 'authorization';
 
 
-  // login(loginData:LoginModel):Observable<LoginResponse>{
-  //   const body = loginData;
-  //   return this._http.post<LoginResponse>(`auth/signIn`,body)
-  // }
-
-  // login(loginData: LoginModel): Observable<LoginResponse> {
-  //   const body = loginData;
-  //   return this._http.post<LoginResponse>(`auth/signIn`, body).pipe(
-  //     tap(response => {
-  //       const user = response?.data?.user;
-
-  //       console.log(user)
-  //       if (user) {
-  //         // Redirect based on the user's role
-  //         if (user.role === "ADMIN") {
-  //           this._router.navigate(['adminhome']); // Redirect admin to admin-panel
-  //         } else {
-  //           this._router.navigate(['userhome']); // Redirect other users to userhome
-  //         }
-  //       }
-  //     })
-  //   );
-  // }
-
-
+  
   login(loginData: LoginModel): Observable<LoginResponse> {
     const body = loginData;
     return this._http.post<LoginResponse>(`auth/signIn`, body).pipe(

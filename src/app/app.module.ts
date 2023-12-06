@@ -30,6 +30,7 @@ import { UserEffects } from './store/user/user.effects';
 import { MatCardModule } from '@angular/material/card';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { MatOptionModule } from '@angular/material/core';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -60,6 +61,7 @@ import { MatOptionModule } from '@angular/material/core';
     MatCardModule,
     MatFormFieldModule,
     MatOptionModule,
+    ToastrModule.forRoot(),
     StoreModule.forRoot({auth:authReducer,user:_userReducer}),
     EffectsModule.forRoot([AuthEffects,UserEffects])
   ],
