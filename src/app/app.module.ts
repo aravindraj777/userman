@@ -27,6 +27,9 @@ import { AuthInterceptor } from './services/auth/interceptor/auth.interceptor';
 import { authReducer } from './store/auth/auth.reducer';
 import { _userReducer } from './store/user/user.reducer';
 import { UserEffects } from './store/user/user.effects';
+import { MatCardModule } from '@angular/material/card';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import { MatOptionModule } from '@angular/material/core';
 
 
 
@@ -42,7 +45,8 @@ import { UserEffects } from './store/user/user.effects';
     LoginComponent,
     MenuheaderComponent,
     UserlistComponent,
-    ModalComponent
+    ModalComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,9 @@ import { UserEffects } from './store/user/user.effects';
     BrowserAnimationsModule,
     MaterialModule,
     MatDialogModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatOptionModule,
     StoreModule.forRoot({auth:authReducer,user:_userReducer}),
     EffectsModule.forRoot([AuthEffects,UserEffects])
   ],

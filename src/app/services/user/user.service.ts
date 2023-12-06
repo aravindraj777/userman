@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { RegisterApiResponse } from '../../model/user.model';
+import { RegisterApiResponse, User } from '../../model/user.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,11 @@ export class UserService {
     return this._http.get('auth/all-users');
   }
 
+  
+  updateUserDetails(userId: number, updatedUserData: any): Observable<any> {
+    const url = `auth/edit-user/${userId}`;
+    return this._http.put<User>(url, updatedUserData);
+  }
   
   
 }

@@ -4,5 +4,6 @@ export interface UserState {
     users:User[];
     loading:boolean;
     error:Error | null;
+    selectedUserId :number | null
 }
 

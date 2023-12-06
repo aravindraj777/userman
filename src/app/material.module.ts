@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MatDialogModule} from "@angular/material/dialog"
 import {MatButtonModule} from "@angular/material/button"
 import {MatDialogContent} from "@angular/material/dialog"
+import {MatCardModule} from "@angular/material/card"
 
 
 
@@ -13,7 +14,8 @@ import {MatDialogContent} from "@angular/material/dialog"
    CommonModule,
    MatDialogModule,
    MatButtonModule,
-   MatDialogContent
+   MatDialogContent,
+   MatCardModule
  ]
 })
 export class MaterialModule { }
