@@ -82,6 +82,19 @@ export class AuthService {
      return user;
   }
 
+
+  updateProfilePicture(userId: number, profilePicture: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('profilePicture', profilePicture);
+
+    // Add any other parameters needed for your API (e.g., userId)
+    formData.append('userId', userId.toString());
+
+    
+
+    return this._http.post<any>(`auth/update-profile-picture/${userId}`, formData);
+  }
+
   
 
 }

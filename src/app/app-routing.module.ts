@@ -8,15 +8,17 @@ import { UserlistComponent } from './components/admin/userlist/userlist.componen
 import { HomeComponent } from './components/user/home/home.component';
 
 import { AuthService } from './services/auth/auth.service';
+import { authGuard } from './Guards/auth.guard';
+import { loginGuard } from './Guards/login.guard';
 
 
 
 const routes: Routes = [
-  {path:"",component:LoginComponent},
-  {path:"register",component:RegisterFormComponent},
-  {path:"adminhome",component:AdminHomeComponent},
-  {path:"adminhome/user-list",component:UserlistComponent},
-  {path:"userhome",component:HomeComponent}
+  {path:"",component:LoginComponent,canActivate:[loginGuard]},
+  {path:"register",component:RegisterFormComponent,canActivate:[loginGuard]},
+  {path:"adminhome",component:AdminHomeComponent,canActivate:[authGuard]},
+  {path:"adminhome/user-list",component:UserlistComponent,canActivate:[authGuard]},
+  {path:"userhome",component:HomeComponent,canActivate:[authGuard]}
 ];
 
 @NgModule({

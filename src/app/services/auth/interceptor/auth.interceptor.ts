@@ -120,9 +120,9 @@ export class AuthInterceptor implements HttpInterceptor {
                 },
                 catchError((error) => {
                     if (error.status === 403 ) {
-                        // Handle 401 Unauthorized error (e.g., refresh token logic)
+                       
                         console.log("Unauthorized error. Redirect to login page or refresh token.");
-                        // Example: Redirect to login page or trigger a refresh token request
+                        
                         // return this.handleUnauthorizedError();
                         this._authService.refreshToken();
 

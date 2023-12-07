@@ -5,6 +5,8 @@
     phone:string;
     password:string;
     role:string;
+    profilePicUrl:string
+
  }
  
  export interface RegisterApiResponse{

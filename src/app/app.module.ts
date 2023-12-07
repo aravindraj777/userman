@@ -18,7 +18,7 @@ import { ModalComponent } from './components/shared/modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialModule } from './material.module';
-import { StoreModule } from '@ngrx/store';
+import { StoreFeatureModule, StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/auth/auth.effects';
@@ -63,6 +63,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatFormFieldModule,
     MatOptionModule,
     ToastrModule.forRoot(),
+    StoreModule.forFeature('user',_userReducer),
     StoreModule.forRoot({auth:authReducer,user:_userReducer}),
     EffectsModule.forRoot([AuthEffects,UserEffects]),
     StoreDevtoolsModule.instrument({maxAge:25, logOnly:false})
