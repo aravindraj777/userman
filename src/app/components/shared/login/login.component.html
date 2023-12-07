@@ -15,13 +15,13 @@
           <div class="mb-4">
             <label for="password" class="block mb-2 text-white">Password:</label>
             <input type="password" id="password" formControlName="password" class="form-input" placeholder="Enter your password">
-            <!-- <div class="text-red-500 mt-1" *ngIf="myForm.invalid || !myForm.dirty">Password is required</div>
-            <div class="text-red-500 mt-1" *ngIf="myForm.invalid && myForm.dirty">Password must be at least 6 characters</div> -->
+             <div class="text-red-500 mt-1" *ngIf="loginForm.invalid && loginForm.dirty">Password is required</div>
+            <!-- <div class="text-red-500 mt-1" *ngIf="myForm.invalid && myForm.dirty">Password must be at least 6 characters</div> --> 
           </div>
   
           <div class="flex items-center justify-between">
             <a href="#" class="text-gray-300 hover:text-indigo-300" routerLink="register">Register</a>
-            <button type="submit" class="bg-silver hover:bg-gray-400 text-white font-bold py-2 px-4 rounded" >Login</button>
+            <button type="submit" class="bg-silver hover:bg-gray-400 text-white font-bold py-2 px-4 rounded">Login</button>
           </div>
         </form>
       </div>
