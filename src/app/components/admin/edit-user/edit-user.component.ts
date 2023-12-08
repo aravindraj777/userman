@@ -37,14 +37,14 @@ export class EditUserComponent {
   
   onSaveChanges() {
     if (this.editForm.valid) {
-      const userId = this.data.id; // Assuming you have a field named 'id' in your form
+      const userId = this.data.id; 
       const updatedUserData = this.editForm.value;
       
-      // Call the user service to update the user details
+      // Call the user service
       this._userService.updateUserDetails(userId, updatedUserData).subscribe(
         (response) => {
           console.log('User details updated successfully:', response);
-          // Optionally, close the dialog or perform any other action
+          //  close the dialog 
           this._dialogRef.close(response);
           this._store.dispatch(loadUsers());
 
@@ -52,7 +52,7 @@ export class EditUserComponent {
         },
         (error) => {
           console.error('Error updating user details:', error);
-          // Handle error, display a message, etc.
+         
         }
       );
     }
